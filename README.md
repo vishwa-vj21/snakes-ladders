@@ -75,7 +75,7 @@ Future Improvements
 
 Credits
 
-Developed by [Your Name].
+Developed by Vishwajith S.
 
 Enjoy playing Snakes and Ladders! 🐍🎲
 
