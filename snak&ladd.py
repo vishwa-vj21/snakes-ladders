@@ -4,21 +4,17 @@ import random
 import pygame
 from PIL import Image, ImageTk  # For transparent player images
 
-# Initialize pygame for sound
 pygame.mixer.init()
 
-# Load background music
-pygame.mixer.music.load("background_music.wav")  # Ensure this file exists
-pygame.mixer.music.set_volume(0.3)  # Adjust volume
-pygame.mixer.music.play(-1)  # Loop forever
+pygame.mixer.music.load("background_music.wav")  
+pygame.mixer.music.set_volume(0.3)  
+pygame.mixer.music.play(-1)  
 
-# Load sound effects
 dice_sound = pygame.mixer.Sound("dice_roll.wav")
 snake_sound = pygame.mixer.Sound("snake_bite.wav")
 ladder_sound = pygame.mixer.Sound("ladder_climb.wav")
 step_sound = pygame.mixer.Sound("step.wav")
 
-# Define Snakes and Ladders
 snakes = {39: 3, 46: 11, 52: 31, 73: 58, 80: 40, 87: 32, 93: 70, 96: 79, 98: 6}
 ladders = {5: 18, 14: 29, 25: 47, 43: 62, 71: 91, 74: 95}
 
@@ -26,7 +22,6 @@ ladders = {5: 18, 14: 29, 25: 47, 43: 62, 71: 91, 74: 95}
 root = tk.Tk()
 root.title("Snakes and Ladders")
 
-# Set window size
 window_width = 600
 window_height = 750
 root.geometry(f"{window_width}x{window_height}")
@@ -39,7 +34,6 @@ frame.pack(pady=10)
 canvas = tk.Canvas(frame, width=600, height=600, highlightthickness=0)
 canvas.pack()
 
-# Load board image
 board_img = tk.PhotoImage(file="board.png")
 canvas.create_image(300, 300, image=board_img)
 
@@ -52,12 +46,10 @@ def load_transparent_image(path, size=(50, 50)):
 player1_img = load_transparent_image("player1.png")
 player2_img = load_transparent_image("player2.png")
 
-# Player Positions
 players = {"Player 1": 1, "Player 2": 1}
 player_turn = "Player 1"
 rolling_dice = False
 
-# Function to Get Board Coordinates
 def get_coordinates(position):
     row = (position - 1) // 10
     col = (position - 1) % 10
