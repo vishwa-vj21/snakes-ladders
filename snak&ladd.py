@@ -66,7 +66,6 @@ player_icons = {
     "Player 2": canvas.create_image(x - 15, y + 15, anchor=tk.CENTER, image=player2_img)
 }
 
-# Function to Move Players Step-by-Step
 def move_step_by_step(player, target_pos):
     current_pos = players[player]
     
@@ -94,7 +93,6 @@ def move_step_by_step(player, target_pos):
     players[player] = next_pos
     root.after(200, move_step_by_step, player, target_pos)
 
-# Function to Move Instantly for Ladders
 def move_directly(player, target_pos):
     x1, y1 = get_coordinates(players[player])
     x2, y2 = get_coordinates(target_pos)
@@ -104,7 +102,6 @@ def move_directly(player, target_pos):
     check_winner(player)
     switch_turn()
 
-# Function to Move Player After Snake Bite
 def move_snake(player, target_pos):
     canvas.itemconfig(player_icons[player], state="normal")
     x1, y1 = get_coordinates(players[player])
@@ -114,14 +111,12 @@ def move_snake(player, target_pos):
     players[player] = target_pos
     switch_turn()
 
-# Function to Check Winner
 def check_winner(player):
     if players[player] == 100:
         pygame.mixer.music.stop()
         messagebox.showinfo("Game Over", f"{player} Wins!")
         root.quit()
 
-# Function to Switch Turn
 def switch_turn():
     global player_turn, rolling_dice
     player_turn = "Player 2" if player_turn == "Player 1" else "Player 1"
@@ -129,7 +124,6 @@ def switch_turn():
     roll_button.config(state=tk.NORMAL)
     rolling_dice = False
 
-# Function to Roll Dice
 def roll_dice():
     global rolling_dice
     if rolling_dice:
